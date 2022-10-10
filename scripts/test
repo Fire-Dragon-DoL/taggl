@@ -1,3 +1,10 @@
-#!/usr/bin/env bash
+#!/usr/bin/env ruby
 
-exec bundle exec ruby -e 'require "bundler/setup"; require "test_bench"; $LOAD_PATH.unshift(File.expand_path("./test", __dir__)); puts TestBench::CLI.()'
+require "bundler/setup"
+
+$LOAD_PATH.unshift(File.expand_path("../test", __dir__))
+
+require "test_bench"
+
+TestBench::CLI.()
+
