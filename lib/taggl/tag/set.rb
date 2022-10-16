@@ -1,6 +1,15 @@
 module Taggl
   module Tag
     class Set
+      # @param tags [<String>,#each,Set] set of tags or enumerable of tags
+      # @return [Set] if already a Set, returned unchanged, otherwise parsed
+      #   into a Set
+      def self.parse(tags)
+        return tags if tags.is_a?(self)
+
+        new(tags)
+      end
+
       # @param tags [<String>,#each] array of tags or enumerable of tags
       def initialize(tags)
         @tags = ::Set.new(tags)
